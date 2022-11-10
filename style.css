@@ -105,6 +105,10 @@ button{
     transition: background-color .3s;
 }
 
+.ativo{
+    background-color: #404EED;
+}
+
 button:active {
     background-color: #3540bb;
 }

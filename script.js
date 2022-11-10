@@ -2,10 +2,7 @@ let input = null;
 
 let modeloTitulo, golaTitulo, tecidoTitulo;
 
-
-
-//const nomeUsuario = prompt("qual seu nome?");
-
+const nomeUsuario = prompt("qual seu nome?");
 
 //pegar a camisa que foi clicada e trazer para o javaScript
 function selecionadoModelo(camisaClicada, modelo){
@@ -20,9 +17,9 @@ function selecionadoModelo(camisaClicada, modelo){
     camisaClicada.classList.add('selecionado');
 
     modeloTitulo = camisaClicada.getAttribute('id');
-    console.log(modeloTitulo)
-}
 
+    liberarBotao();
+}
 
 //pegar a camisa que foi clicada e trazer para o javaScript
 function selecionadoGola(camisaClicada){
@@ -37,9 +34,9 @@ function selecionadoGola(camisaClicada){
     camisaClicada.classList.add('selecionado');
 
     golaTitulo = camisaClicada.getAttribute('id');
-    console.log(golaTitulo)
-}
 
+    liberarBotao();
+}
 
 //pegar a camisa que foi clicada e trazer para o javaScript
 function selecionadoTecido(camisaClicada){
@@ -54,7 +51,8 @@ function selecionadoTecido(camisaClicada){
     camisaClicada.classList.add('selecionado');
 
     tecidoTitulo = camisaClicada.getAttribute('id');
-    console.log(tecidoTitulo)
+
+    liberarBotao();
 }
 
 //verificando se é uma URL
@@ -78,15 +76,22 @@ const buttonUrl = (evento) =>{
     // verificando se o que o usuario mandou é uma url
     let checkInput = checkUrl(input);
     //Colocar um if aqui
-    console.log(input);
     return input;
    // input.value = '';
 }
 
 pegarUrl.addEventListener('click', buttonUrl);
 
-const ativarBotaoFecharPedido = () =>{
-    //se camisa estiver selecionada
+//função para liberar o botão
+function liberarBotao(){
+    
+    input = document.querySelector('[data-form-input]').value;
+
+    if((modeloTitulo !== undefined) && (golaTitulo !== undefined) && (tecidoTitulo !== undefined) && (input !== "")){
+        const botao = document.querySelector('.button');
+        botao.classList.add('ativo');
+    }
+
 }
 
 function pedido (){
@@ -96,12 +101,15 @@ function pedido (){
 		neck: golaTitulo,
 		material: tecidoTitulo,
 		image: input,
-		owner: "oi",
-		author: "oi"
+		owner: nomeUsuario,
+		author: nomeUsuario
     }
     console.log(camisanova)
     const promesa = axios.post('https://mock-api.driven.com.br/api/v4/shirts-api/shirts', camisanova)
     .then(pegarCamisa);
+    //then recebe a função com o get
+
+    alert('confirmando a encomenda.');
 }
 
 function pegarCamisa(){

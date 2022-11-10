@@ -83,17 +83,17 @@
                 </div>
 
                 <p>Imagem de referência</p>
-                <form>
-                    <input type="url" placeholder="Insira o link" class="form-input" data-form-input >
+                <form >
+                    <!--onkeyup para ve se foi preenchido a input-->
+                    <input type="url" placeholder="Insira o link" onkeyup="liberarBotao()" class="form-input" data-form-input required>
                 </form>
-                <button class="button" onclick="pedido()" data-button>Confirmar pedido</button>
+                    <button class="button" onclick="pedido()" data-button>Confirmar pedido</button>
             </section>
             <!--imagem de lado-->
             <aside>
                 <img src="./img/ilustração.png" alt="Uma ilustração de uma modelo">
             </aside>
         </div>
-
 
         <article>
             <h2>Ultimos pedidos</h2>
