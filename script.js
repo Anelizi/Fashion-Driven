@@ -2,6 +2,8 @@ let input = null;
 
 let modeloTitulo, golaTitulo, tecidoTitulo;
 
+
+
 //const nomeUsuario = prompt("qual seu nome?");
 
 
@@ -16,6 +18,9 @@ function selecionadoModelo(camisaClicada, modelo){
     }
     //adicionar a classe selecionado no elemendo que foi clicado
     camisaClicada.classList.add('selecionado');
+
+    modeloTitulo = camisaClicada.getAttribute('id');
+    console.log(modeloTitulo)
 }
 
 
@@ -30,6 +35,9 @@ function selecionadoGola(camisaClicada){
     }
     //adicionar a classe selecionado no elemendo que foi clicado
     camisaClicada.classList.add('selecionado');
+
+    golaTitulo = camisaClicada.getAttribute('id');
+    console.log(golaTitulo)
 }
 
 
@@ -44,6 +52,9 @@ function selecionadoTecido(camisaClicada){
     }
     //adicionar a classe selecionado no elemendo que foi clicado
     camisaClicada.classList.add('selecionado');
+
+    tecidoTitulo = camisaClicada.getAttribute('id');
+    console.log(tecidoTitulo)
 }
 
 //verificando se é uma URL
@@ -68,12 +79,54 @@ const buttonUrl = (evento) =>{
     let checkInput = checkUrl(input);
     //Colocar um if aqui
     console.log(input);
-    input.value = '';
+    return input;
+   // input.value = '';
 }
 
 pegarUrl.addEventListener('click', buttonUrl);
 
 const ativarBotaoFecharPedido = () =>{
     //se camisa estiver selecionada
-  
 }
+
+function pedido (){
+    input = document.querySelector('[data-form-input]').value;
+    let camisanova = {
+		model: modeloTitulo,
+		neck: golaTitulo,
+		material: tecidoTitulo,
+		image: input,
+		owner: "oi",
+		author: "oi"
+    }
+    console.log(camisanova)
+    const promesa = axios.post('https://mock-api.driven.com.br/api/v4/shirts-api/shirts', camisanova)
+    .then(pegarCamisa);
+}
+
+function pegarCamisa(){
+    const promesa = axios.get('https://mock-api.driven.com.br/api/v4/shirts-api/shirts')
+    promesa.then(pritCamisa);
+}
+
+function pritCamisa(resposta){
+    const container = document.querySelector('.article_caixa ul');
+
+    container.innerHTML='';
+    console.log(resposta.data)
+    let camisas = resposta.data
+    for( let i = 0; i < camisas.length; i++){
+        
+        container.innerHTML+=`
+        <li>
+            <img src=${camisas[i].image} alt="">
+            <p class="escuro">
+                Criador:
+            </p> 
+            <span>${camisas[i].owner}</span>
+        </li>
+        `
+    }
+
+}
+pegarCamisa();

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="style.css">
-    <link rel="shortcut icon" href="https://yt3.ggpht.com/oZCGpPQc5qat2YIzVs_h1LTvrtpV6G--Q2CopkOoAa7d1WvHDohPzWO-vSEnQ4GljcQOO_6QkQ=s900-c-k-c0x00ffffff-no-rj" type="image/x-icon">
+    <link rel="shortcut icon" href="https://images.vexels.com/media/users/3/146862/isolated/preview/4275c2b684da6053608f312ae3cfc270-icone-de-camisa-de-futebol-da-franca.png" type="image/x-icon">
     <title>Fashion Driven</title>
 </head>
 <body>
@@ -19,19 +19,19 @@
                 <h2>Escolha o modelo</h2>
                 <div class="section_caixa">
                     <div class="section_caixa_escolha caixa1" >
-                        <div class="section_caixa_escolha__img" onclick="selecionadoModelo(this)">
+                        <div class="section_caixa_escolha__img" onclick="selecionadoModelo(this)" id="t-shirt">
                             <img src="./img/tshirt.png" alt="">
                         </div>
                         <h3 class="titulo">T-shirt</h3>
                     </div>
                     <div class="section_caixa_escolha caixa1" >
-                        <div class="section_caixa_escolha__img" onclick="selecionadoModelo(this)">
+                        <div class="section_caixa_escolha__img" onclick="selecionadoModelo(this)" id="top-tank">
                             <img src="./img/Camiseta.png" alt="">
                         </div> 
                         <h3 class="titulo">Camiseta</h3>
                     </div>
                     <div class="section_caixa_escolha caixa1">
-                        <div class="section_caixa_escolha__img" onclick="selecionadoModelo(this)">
+                        <div class="section_caixa_escolha__img" onclick="selecionadoModelo(this)" id="long">
                             <img src="./img/Mangalonga.png" alt="">
                         </div> 
                         <h3 class="titulo">Manga longa</h3>
@@ -41,19 +41,19 @@
                 <h2>Escolha a gola </h2>
                 <div class="section_caixa">
                     <div class="section_caixa_escolha caixa2">
-                        <div class="section_caixa_escolha__img" onclick="selecionadoGola(this)">
+                        <div class="section_caixa_escolha__img" onclick="selecionadoGola(this)" id="v-neck">
                             <img src="./img/GolaV.png" alt="">
                         </div> 
                         <h3 class="titulo">Gola V</h3>
                     </div>
                     <div class="section_caixa_escolha caixa2">
-                        <div class="section_caixa_escolha__img" onclick="selecionadoGola(this)">
+                        <div class="section_caixa_escolha__img" onclick="selecionadoGola(this)" id="round">
                             <img src="./img/GolaRedonda.png" alt="">
                         </div> 
                         <h3 class="titulo">Gola Redonda</h3>
                     </div>
                     <div class="section_caixa_escolha caixa2">
-                        <div class="section_caixa_escolha__img" onclick="selecionadoGola(this)">
+                        <div class="section_caixa_escolha__img" onclick="selecionadoGola(this)" id="polo">
                             <img src="./img/GolaPolo.png" alt="">
                         </div> 
                         <h3 class="titulo">Gola polo</h3>
@@ -63,19 +63,19 @@
                 <h2>Escolha o tecido</h2>
                 <div class="section_caixa">
                     <div class="section_caixa_escolha caixa3">
-                        <div class="section_caixa_escolha__img" onclick="selecionadoTecido(this)">
+                        <div class="section_caixa_escolha__img" onclick="selecionadoTecido(this)" id="silk">
                             <img src="./img/Seda.png" alt="">
                         </div> 
                         <h3 class="titulo">Seda</h3>
                     </div>
                     <div class="section_caixa_escolha caixa3">
-                        <div class="section_caixa_escolha__img" onclick="selecionadoTecido(this)">
+                        <div class="section_caixa_escolha__img" onclick="selecionadoTecido(this)" id="cotton">
                             <img src="./img/Algodão.png" alt="">
                         </div> 
                         <h3 class="titulo">Algodão</h3>
                     </div>
                     <div class="section_caixa_escolha caixa3">
-                        <div class="section_caixa_escolha__img" onclick="selecionadoTecido(this)">
+                        <div class="section_caixa_escolha__img" onclick="selecionadoTecido(this)" id="polyester">
                             <img src="./img/Poliester.png" alt="">
                         </div> 
                         <h3 class="titulo">Poliéster</h3>
@@ -86,7 +86,7 @@
                 <form>
                     <input type="url" placeholder="Insira o link" class="form-input" data-form-input >
                 </form>
-                <button class="button" data-button>Confirmar pedido</button>
+                <button class="button" onclick="pedido()" data-button>Confirmar pedido</button>
             </section>
             <!--imagem de lado-->
             <aside>
@@ -99,36 +99,14 @@
             <h2>Ultimos pedidos</h2>
             <div class="article_caixa">
                 <ul>
-                    <li>
-                        <img src="./img/Blusa1.png" alt="">
-                        
-                        <strong>Criador: </strong>
-                        <span>Agata</span> 
-                    </li>
+                <!--Alimendado pelo JavaScript-->
+                <!-- 
                     <li>
                         <img src="./img/Blusa2.png" alt="">
-
-                        <strong>Criador: </strong>
-                        <span>Bruna</span>    
+                        <p class="escuro">Criador:</p> 
+                        <span>Bruna</span>
                     </li>
-                    <li>
-                        <img src="./img/Blusa3.png" alt="">
-
-                        <strong>Criador: </strong>
-                        <span>Camila</span>
-                    </li>
-                    <li>
-                        <img src="./img/Blusa3.png" alt="">
-
-                        <strong>Criador: </strong>
-                        <span>Daniel</span>
-                    </li>
-                    <li>
-                        <img src="./img/Blusa5.png" alt="">
-
-                        <strong>Criador: </strong>
-                        <span>Ester</span>
-                    </li>
+                -->
                 </ul>
             </div>
         </article>
